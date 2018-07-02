@@ -30,7 +30,7 @@ public class CloneUtils {
 		return in.readObject();
 	}
 
-	/**
+	/**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 	 * 同类对象属性复制(private,public) 复制出来的为新对象
 	 * 
 	 * @param object
