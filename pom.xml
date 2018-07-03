@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.com.inlee</groupId>
 	<artifactId>integration</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${inlee.version}</version>
 	<packaging>pom</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -16,6 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<inlee.version>0.0.1-SNAPSHOT</inlee.version>
 	</properties>
 
 	<distributionManagement>
@@ -36,5 +37,6 @@
 	
 	<modules>
 		<module>inlee-common</module>
+		<module>inlee-db-service</module>
 	</modules>
 </project>
