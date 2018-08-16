@@ -38,5 +38,7 @@
 	<modules>
 		<module>inlee-common</module>
 		<module>inlee-db-service</module>
+		<module>inlee-authority</module>
+		<module>inlee-mina</module>
 	</modules>
 </project>

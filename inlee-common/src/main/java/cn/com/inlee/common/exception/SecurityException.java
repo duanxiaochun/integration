@@ -9,7 +9,7 @@ package cn.com.inlee.common.exception;
 public class SecurityException extends BaseException {
 
 	public SecurityException() {
-		this("Security失败");
+		this("失败");
 	}
 
 	public SecurityException(String tips) {

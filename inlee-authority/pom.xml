@@ -8,55 +8,43 @@
 		<artifactId>integration</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
-	<artifactId>inlee-db-service</artifactId> 
- 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<dependencies>
+	<artifactId>inlee-authority</artifactId>
+	<name>inlee-authority</name>
 
+	<properties>
+		<spring-cloud.version>Dalston.SR1</spring-cloud.version>
+	</properties>
+
+	<dependencies>
 		<dependency>
 			<groupId>cn.com.inlee</groupId>
 			<artifactId>inlee-common</artifactId>
 			<version>${inlee.version}</version>
 		</dependency>
-
-		<!-- 支持 Mybatis -->
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.2.0</version>
-		</dependency>
-		<!-- 支持分页 -->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>4.1.1</version>
-		</dependency>
-		<!-- 数据库连接池 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>1.0.18</version>
-		</dependency>
-		<!-- mysql驱动 -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<!-- 要将源码放上去，需要加入这个插件 -->
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
+
 				<configuration>
 					<attach>true</attach>
 				</configuration>

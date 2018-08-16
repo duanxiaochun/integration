@@ -27,6 +27,13 @@ public class BaseException extends Exception {
 	 * 成功但无数据
 	 */
 	public static String SUCCESS_NODATA = "0001";
+	
+	
+	/**
+	 * 系统错误，但无异常抛出
+	 */
+	public static String ERROR_NO_EXCEPTION = "1111";
+	
 	/**
 	 * 请求过期，需要重新登录
 	 */
@@ -66,7 +73,7 @@ public class BaseException extends Exception {
 	 */
 	public static String NO_ACCESS = "2000";
 	/**
-	 * 操作不被允许
+	 * 操作不被允许 
 	 */
 	public static String DISALLOW_OPERATION = "2001";
 	/**
@@ -79,13 +86,13 @@ public class BaseException extends Exception {
 	public static String ERROR_VERIFICATION = "2003";
 
 	/**
-	 * 
+	 * 文件操作错误
 	 */
 	public static String FILE_OPERATION = "2004";
 
 	
 	/**
-	 * 
+	 * 安全验证错
 	 */
 	public static String ERR_SECURITY = "2005";
 	
@@ -124,8 +131,10 @@ public class BaseException extends Exception {
 	 */
 	public static String LOADING_ERR = "6000";
 	
-	
-	public static String PARAM_ERR = "6000";
+	/**
+	 * 参数错
+	 */
+	public static String PARAM_ERR = "6001";
 
 	/**
 	 * 异常代码

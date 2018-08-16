@@ -23,7 +23,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("create -> class:{}, message:{}", t.getClass().getSimpleName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "保存数据出错。");
+			throw new DBAccessException("保存数据出错。", e);
 		}
 	}
 
@@ -35,7 +35,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("batchCreate -> class:{},message:{}", t.getClass().getSimpleName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "保存数据出错。");
+			throw new DBAccessException("保存数据出错。", e);
 		}
 	}
 
@@ -46,11 +46,9 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("modify -> class:{},message:{}", t.getClass().getSimpleName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "修改数据出错。");
+			throw new DBAccessException("修改数据出错。", e);
 		}
 	}
-
- 
 
 	@Override
 	public Long remove(PK pk) throws DBAccessException {
@@ -60,7 +58,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("remove:{} -> class:{},message:{}", pk, e.getClass().getName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "删除数据出错。");
+			throw new DBAccessException("删除数据出错。", e);
 		}
 	}
 
@@ -73,7 +71,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("remove:{} -> class:{},message:{}", pks, e.getClass().getName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "删除数据出错。");
+			throw new DBAccessException("删除数据出错。", e);
 		}
 	}
 
@@ -84,7 +82,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("searchById:{} -> class:{},message:{}", pk, e.getClass().getName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "查询数据出错。");
+			throw new DBAccessException("查询数据出错。", e);
 		}
 	}
 
@@ -96,7 +94,7 @@ public abstract class BaseServiceImpl<T extends Object, PK extends Serializable>
 		}
 		catch (DataAccessException e) {
 			log.error("searchAll -> class:{},message:{}", e.getClass().getName(), e.getMessage());
-			throw new DBAccessException(e.getMessage(), "查询数据出错。");
+			throw new DBAccessException("查询数据出错。", e);
 		}
 	}
 }

@@ -17,7 +17,7 @@ public class ParamException extends BaseException {
 		super(PARAM_ERR, "参数错误或为空", tips);
 	}
 
-	public ParamException(String tips, BaseException original) {
+	public ParamException(String tips, Exception original) {
 		super(PARAM_ERR, tips, original);
 
 	}

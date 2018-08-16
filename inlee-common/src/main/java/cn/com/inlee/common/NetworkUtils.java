@@ -43,6 +43,10 @@ public class NetworkUtils {
 			return NetworkUtils.post(this);
 		}
 
+		public byte[] postByte() throws IOException {
+			return NetworkUtils.postBuffer(this);
+		}
+
 		public <T> T post(Class<T> clazz) throws InnerAPIException {
 			try {
 				return NetworkUtils.post(this, clazz);
@@ -71,6 +75,10 @@ public class NetworkUtils {
 
 		public Request(Cookie[] cookies, String url, Map<String, String> params) {
 			this(null, cookies, url, params, TRANS_ENCODING);
+		}
+
+		public Request(String url) {
+			this(url, null);
 		}
 
 		public Request(String url, Map<String, String> params) {
@@ -261,6 +269,50 @@ public class NetworkUtils {
 		}
 
 		return result;
+
+	}
+
+	@SuppressWarnings("deprecation")
+	private static byte[] postBuffer(Request request) throws IOException {
+
+		final HttpClient httpClient = request.getHttpClient() == null ? new HttpClient() : request.getHttpClient();
+
+		byte[] buffer = null;
+		PostMethod post = new PostMethod(request.getUrl());
+		post.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, request.getCharSet());
+		if (StringUtils.isNotEmpty(request.getParams())) {
+			post.setRequestBody(mergePostParams(request.getParams()));
+		}
+		else if (StringUtils.isNotEmpty(request.getJsonString())) {
+			// InputStream inStream = new
+			// ByteInputStream(request.getJsonString().getBytes(request.getCharSet()),
+			// request.getJsonString().getBytes(request.getCharSet()).length);
+			post.getParams().setParameter("Content-type", TRANS_CONTENT_TYPE);
+			post.setRequestBody(request.getJsonString());
+		}
+		if (request.getCookies() != null) {
+			HttpState state = new HttpState();
+			state.addCookies(request.getCookies());
+			httpClient.setState(state);
+		}
+		int statusCode = httpClient.executeMethod(post);
+		if (isRedirect(statusCode)) {
+			Header header = post.getResponseHeader("location");
+			String location = header.getValue();
+			if (location == null || location.equals("")) {
+				location = "/";
+			}
+			GetMethod getMethod = new GetMethod(location);
+			httpClient.executeMethod(getMethod);
+			buffer = getMethod.getResponseBody();
+			getMethod.releaseConnection();
+		}
+		else {
+			buffer = post.getResponseBody();
+			post.releaseConnection();
+		}
+
+		return buffer;
 
 	}
 

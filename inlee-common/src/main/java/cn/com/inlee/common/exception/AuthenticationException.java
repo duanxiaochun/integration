@@ -17,7 +17,7 @@ public class AuthenticationException extends BaseException {
 		super(ERROR_AUTH, "认证失败", tips);
 	}
 
-	public AuthenticationException(String tips, BaseException original) {
+	public AuthenticationException(String tips, Exception original) {
 		super(ERROR_AUTH, tips, original);
 
 	}
